@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class RemoveDuplicados {
+
+    public static void main(String[] args) {
+        List<FaixaEtariaVO> listaOriginal = criarListaOriginal(); // Substitua essa função pela obtenção da sua lista original
+
+        List<FaixaEtariaVO> listaSemDuplicados = removerDuplicados(listaOriginal);
+
+        // Exibir a lista sem duplicados
+        for (FaixaEtariaVO faixa : listaSemDuplicados) {
+            System.out.println(faixa);
+        }
+    }
+
+    private static List<FaixaEtariaVO> criarListaOriginal() {
+        // Cria a lista original com os dados fornecidos
+        List<FaixaEtariaVO> listaOriginal = new ArrayList<>();
+        listaOriginal.add(new FaixaEtariaVO(33, "Leitão"));
+        listaOriginal.add(new FaixaEtariaVO(33, "Leitão"));
+        listaOriginal.add(new FaixaEtariaVO(34, "Reprodutor"));
+        listaOriginal.add(new FaixaEtariaVO(34, "Reprodutor"));
+        listaOriginal.add(new FaixaEtariaVO(35, "Indefinido"));
+        return listaOriginal;
+    }
+
+    private static List<FaixaEtariaVO> removerDuplicados(List<FaixaEtariaVO> listaOriginal) {
+        Set<FaixaEtariaVO> conjunto = new HashSet<>(listaOriginal);
+        return new ArrayList<>(conjunto);
+    }
+}
+
+class FaixaEtariaVO {
+    private int id;
+    private String descricao;
+
+    public FaixaEtariaVO(int id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
+
+    // Getters e Setters
+
+    @Override
+    public String toString() {
+        return "FaixaEtariaVO{" +
+                "id=" + id +
+                ", descricao='" + descricao + '\'' +
+                '}';
+    }
